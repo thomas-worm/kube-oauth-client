@@ -1,3 +1,4 @@
 .kube
 .k3s
 .idea
+.gitpod/usr
