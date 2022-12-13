@@ -12,5 +12,5 @@ if test -f "${kubectlbinpath}"; then
 fi
 
 mkdir -p $gitpodlocalbin
-curl -o kubectlbinpath -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-chmod +x kubectlbinpath
+curl -o $kubectlbinpath -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x $kubectlbinpath
