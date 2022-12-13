@@ -3,7 +3,7 @@
 set -euo pipefail
 
 script_dirname="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-workspace_dirname="$( cd "$( dirname "${script_dirname}" )/../.." &> /dev/null && pwd )"
+workspace_dirname="$( cd "${script_dirname}/../.." &> /dev/null && pwd )"
 rootfsdir="${workspace_dirname}/.k3s/rootfs"
 rootfslock="${rootfsdir}/rootfs-ready.lock"
 

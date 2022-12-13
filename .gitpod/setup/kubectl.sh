@@ -1,7 +1,7 @@
 #!/bin/bash
 
 script_dirname="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-workspace_dirname="$( cd "$( dirname "${script_dirname}" )/../.." &> /dev/null && pwd )"
+workspace_dirname="$( cd "${script_dirname}/../.." &> /dev/null && pwd )"
 gitpodlocalbin="${workspace_dirname}/.gitpod/usr/local/bin"
 kubectlbinpath="${gitpodlocalbin}/kubectl"
 sudo ln -f -s $kubectlbinpath /usr/local/bin/kubectl
