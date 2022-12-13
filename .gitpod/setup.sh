@@ -10,4 +10,5 @@ $workspace_dirname/.gitpod/setup/symlinks.sh
 $workspace_dirname/.gitpod/setup/qemu.sh
 $workspace_dirname/.gitpod/setup/rootfs.sh
 $workspace_dirname/.gitpod/setup/kubectl.sh
+$workspace_dirname/.gitpod/setup/helm.sh
 $workspace_dirname/.gitpod/setup/k3s.sh
