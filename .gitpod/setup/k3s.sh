@@ -34,6 +34,11 @@ sshpass -p 'root' scp -o StrictHostKeychecking=no -P 2222 root@127.0.0.1:/etc/ra
 ./kubectl.sh
 kubectl get pods --all-namespaces
 
+./helm.sh
+
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm install ingress-nginx ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace --set controller.service.type=NodePort --set controller.service.nodePorts.http=32080 --set controller.service.nodePorts.https=32443
+
 popd
 
 touch "${k3sreadylock}"
