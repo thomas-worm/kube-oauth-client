@@ -13,7 +13,27 @@ function waitrootfs() {
   done
 }
 
+function waitqemu() {
+  while ! test -f "/usr/bin/qemu-system-x86_64"; do
+    sleep 0.1
+  done
+  i=0
+  tput sc
+  while fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do
+    case $(($i % 4)) in
+      0 ) j="-" ;;
+      1 ) j="\\" ;;
+      2 ) j="|" ;;
+      3 ) j="/" ;;
+    esac
+    tput rc
+    sleep 0.5
+    ((i=i+1))
+  done
+}
+
 waitrootfs
+waitqemu
 
 sudo qemu-system-x86_64 -kernel "/boot/vmlinuz" \
 -boot c -m 2049M -hda "${rootfsdir}/jammy-server-cloudimg-amd64.img" \
