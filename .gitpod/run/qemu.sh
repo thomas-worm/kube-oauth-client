@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -xeuo pipefail
-
 script_dirname="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 workspace_dirname="$( cd "${script_dirname}/../.." &> /dev/null && pwd )"
 rootfsdir="${workspace_dirname}/.k3s/rootfs"
@@ -35,8 +33,13 @@ function waitqemu() {
   done
 }
 
+echo "Waiting for rootfs..."
 waitrootfs
+echo "Waiting for qemu..."
 waitqemu
+
+echo "Starting qemu..."
+set -xeuo pipefail
 
 sudo qemu-system-x86_64 -kernel "/boot/vmlinuz" \
 -boot c -m 2049M -hda "${rootfsdir}/jammy-server-cloudimg-amd64.img" \
