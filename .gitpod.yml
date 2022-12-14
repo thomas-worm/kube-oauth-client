@@ -1,14 +1,12 @@
 image: gitpod/workspace-full
 tasks:
   - name: shell
-    command: |
-      echo "Hello"
+    command: echo "Hello"
   - name: setup
-    command: |
-      .gitpod/setup.sh
+    init: .gitpod/setup.sh
+    command: .gitpod/setup.sh
   - name: k3s
-    command: |
-      .gitpod/run/qemu.sh
+    command: .gitpod/run/qemu.sh
 ports:
   - port: 32080
     visibility: private
