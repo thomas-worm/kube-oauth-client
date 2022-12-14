@@ -31,7 +31,9 @@ sshpass -p 'root' ssh -o StrictHostKeychecking=no -p 2222 root@127.0.0.1 DEBIAN_
 sshpass -p 'root' ssh -o StrictHostKeychecking=no -p 2222 root@127.0.0.1 apt-get update -y
 sshpass -p 'root' ssh -o StrictHostKeychecking=no -p 2222 root@127.0.0.1 reboot
 
-sleep 2
+sleep 
+
+waitssh
 
 sshpass -p 'root' ssh -o StrictHostKeychecking=no -p 2222 root@127.0.0.1 "curl -sfL https://get.k3s.io | sh -"
 
