@@ -17,6 +17,9 @@ function waitqemu() {
   while ! test -f "/usr/bin/qemu-system-x86_64"; do
     sleep 0.1
   done
+  while ! test -f "/boot/vmlinuz"; do
+    sleep 0.1
+  done
   i=0
   tput sc
   while fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do
