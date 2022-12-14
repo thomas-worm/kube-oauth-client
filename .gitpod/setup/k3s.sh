@@ -26,7 +26,14 @@ sudo apt install netcat sshpass -y
 
 waitssh
 
-sshpass  -p 'root' ssh -o StrictHostKeychecking=no -p 2222 root@127.0.0.1 "curl -sfL https://get.k3s.io | sh -"
+sshpass -p 'root' ssh -o StrictHostKeychecking=no -p 2222 root@127.0.0.1 apt-get update -y
+sshpass -p 'root' ssh -o StrictHostKeychecking=no -p 2222 root@127.0.0.1 DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
+sshpass -p 'root' ssh -o StrictHostKeychecking=no -p 2222 root@127.0.0.1 apt-get update -y
+sshpass -p 'root' ssh -o StrictHostKeychecking=no -p 2222 root@127.0.0.1 reboot
+
+sleep 2
+
+sshpass -p 'root' ssh -o StrictHostKeychecking=no -p 2222 root@127.0.0.1 "curl -sfL https://get.k3s.io | sh -"
 
 mkdir -p ~/.kube
 sshpass -p 'root' scp -o StrictHostKeychecking=no -P 2222 root@127.0.0.1:/etc/rancher/k3s/k3s.yaml ~/.kube/config
