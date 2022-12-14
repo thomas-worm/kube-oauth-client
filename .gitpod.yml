@@ -9,3 +9,15 @@ tasks:
   - name: k3s
     command: |
       .gitpod/run/qemu.sh
+ports:
+  - port: 32080
+    visibility: private
+    description: K3s HTTP Ingress
+  - port: 2222
+    visibility: private
+    description: K3s SSH
+    onOpen: ignore
+  - port: 6443
+    visibility: private
+    description: K3s API
+    onOpen: ignore
